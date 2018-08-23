@@ -16,7 +16,7 @@ app.post("/api/friends", function(req, res) {
 		photo: "",
 		scores: 10000
 	}
-	console.log(friendsList);
+	
 	// Calculating totals 
 	for (var i = 0; i < friendsList.length; i++) {
 		total = 0;
@@ -24,10 +24,10 @@ app.post("/api/friends", function(req, res) {
 		for (var j = 0; j < friendsList[i].scores.length; j++) {
 			total += Math.abs(friendsList[i].scores[j] - newFriend.scores[j]);
 
-			if (total <= match.difference) {
+			if (total <= match.scores) {
 				match.name = friendsList[i].name,
 				match.photo = friendsList[i].photo,
-				match.difference = total
+				match.scores = total
 			}
     	}
     }
